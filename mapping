@@ -1,0 +1,51 @@
+curl -XPOST http://localhost:9200/budget/fee/_mapping -d'
+{
+    "fee" : {
+      "properties" : {
+        "costId" : {
+          "type" : "string",
+          "index": "not_analyzed"
+        },
+        "costType" : {
+          "type" : "string",
+          "index": "not_analyzed"
+        },
+        "feeExpr" : {
+          "type" : "string",
+          "index": "not_analyzed"
+        },
+        "feeName" : {
+          "type" : "string",
+          "index": "not_analyzed"
+        },       
+        "feeResult" : {
+          "type" : "string",
+          "index": "not_analyzed"
+        },
+        "parentId" : {
+          "type" : "string",
+          "index": "not_analyzed"
+        }
+      }
+    }
+}'
+
+curl -XPOST http://localhost:9200/budget/cost/_mapping -d'
+{    
+    "cost" : {
+      "properties" : {        
+        "idPath" : {
+          "type" : "string",
+           "index": "not_analyzed"
+        },
+        "parentId" : {
+          "type" : "string",
+           "index": "not_analyzed"
+        },       
+        "type" : {
+          "type" : "string",
+           "index": "not_analyzed"
+        }
+      }
+    }
+}'
