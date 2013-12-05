@@ -1,32 +1,4 @@
-var async = require('async');
-
-var ElasticSearchClient = require('elasticsearchclient');
-
-var es = new ElasticSearchClient({
-	hosts : [ {
-		host : 'localhost',
-		port : 9200
-	} ]
-});
-
-var db = exports.db = function db(){
-	
-};
-
-db.exec = function(api){	 
-	//console.log(arguments);
-	var args = ['budget'];	
-	var i = 1;
-	for(; i < arguments.length-1; i++){
-		args.push(arguments[i]);
-	}
-	var callback = arguments[i];
-	args.push(function(err, data){
-		callback(err, JSON.parse(data));
-	});
-	
-	es[api].apply(es, args);
-}
+//var async = require('async');
 
 // Compute the intersection of n arrays
 Array.prototype.intersect = function() {

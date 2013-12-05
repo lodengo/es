@@ -12,6 +12,7 @@ fee:{
 	id:'',
 	parentId:'',
 	costId:'',
+	costParentId:'',	
 	costType: '',
 	feeName:'',
 	feeExpr:'',
@@ -21,12 +22,7 @@ fee:{
 
 ref:{
 	id:'',
-	from:{
-		costId:'',
-		feeId:''	
-	},
-	to:{
-		type:'cost|fee',
-		id:''	
-	}
+	fromCostId:'',
+	fromFeeId:'',		
+	toId:''	
 }

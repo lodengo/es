@@ -1,8 +1,19 @@
+curl -XDELETE 'http://localhost:9200/budget/_query?q=*'
+
+curl -XPUT localhost:9200/budget/_settings -d '{
+    "index" : {
+        "refresh_interval" : "1ms"
+    } }'
+
 curl -XPOST http://localhost:9200/budget/fee/_mapping -d'
 {
     "fee" : {
       "properties" : {
         "costId" : {
+          "type" : "string",
+          "index": "not_analyzed"
+        },
+        "costParentId" : {
           "type" : "string",
           "index": "not_analyzed"
         },
@@ -43,6 +54,26 @@ curl -XPOST http://localhost:9200/budget/cost/_mapping -d'
            "index": "not_analyzed"
         },       
         "type" : {
+          "type" : "string",
+           "index": "not_analyzed"
+        }
+      }
+    }
+}'
+
+curl -XPOST http://localhost:9200/budget/ref/_mapping -d'
+{    
+    "cost" : {
+      "properties" : {        
+        "fromCostId" : {
+          "type" : "string",
+           "index": "not_analyzed"
+        },
+        "fromFeeId" : {
+          "type" : "string",
+           "index": "not_analyzed"
+        },       
+        "toId" : {
           "type" : "string",
            "index": "not_analyzed"
         }
