@@ -10,7 +10,7 @@ var Api = module.exports = function Api() {
 
 // ////////////////////////////////////////////////////////
 Api._doLater = function(callback) {
-	setTimeout(callback, 100);
+	setTimeout(callback, 1000);
 }
 Api.createCost = function(data, fees, parentId, callback) {
 	var me = this;

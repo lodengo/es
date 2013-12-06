@@ -450,42 +450,10 @@ function run(callback) {
 	step(actor, actions, 0, callback);
 }
 
-// run(function() {
-// console.log('done, info:');
-// //console.log(util.stats.info());
-// });
+ run(function() {
+	 console.log('done');
+	 //console.log(util.stats.info());
+ });
 
-function de(callback){
-	var de = {
-			type : '定额',
-			quantity : Math.random() * 1000
-		};
-		var fs = fees['de'];
-		Api.createCost(de, fs, null, function(err, cost) {			
-			callback(null, cost.id);
-		});
-}
-function glj(parentId, callback){
-	var types = [ "人工", "材料", "机械" ];
-	var glj = {
-		'type' : types[Math.floor(Math.random() * 10) % 3],
-		'price' : Math.random() * 100,
-		'content' : Math.random()
-	};
-	var fs = fees['glj'];
-	
-	Api.createCost(glj, fs, parentId, function(err, cost) {		
-		callback(null, cost);
-	});
-}
 
-de(function(err, id){
-	async.times(5, function(n, next){
-	    glj(id, function(err, glj){
-	    	next(err, glj.id);
-	    });
-	}, function(err, gljs) {
-	  console.log([id, gljs]);
-	});
-});
 
